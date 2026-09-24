@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* font-family: "Montserrat", sans-serif;
+font-family: "Cormorant Garamond", serif; */
+:root{
+    --muted-antique-gold:rgba(181, 158, 95, 0.8);
+    --warm-ivory: rgba(255, 232, 183, 1);
+    --soft-cream: rgba(255, 248, 223, 1);
+    --dark-translucent-green:rgba(1, 50, 32, 0.35);
+    --dark-translucent-blue: rgba(3, 34, 51, 0.35);
+    --headings-text: "Cormorant Garamond", serif;
+    --normal-text: "Montserrat", sans-serif;
+    --water-aqua: #8FE8E8;
+    --water-deep-teal: #075E73;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+.s1p4x-r90deg {
+    transform: scale(1.5) rotate(120deg);
+    display: inline-block;
+}
+
+.text-warm-ivory{
+    color: var(--warm-ivory);
+}
+.bg-warm-ivory{
+    background-color: var(--warm-ivory);
+}
+
+.text-muted-antique-gold{
+    color: var(--muted-antique-gold);
+}
+.bg-muted-antique-gold{
+    background-color: var(--muted-antique-gold);
+}
+
+h1
+{color: var(--warm-ivory);
+font-size: clamp(4.2rem, 5vw, 7rem);
+font-weight: 500;
+font-family: var(--headings-text);
+letter-spacing: 0.02em;}
+
+.btn {
+    font-size: 1.8rem;
+    letter-spacing: 0.05rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.btn-link {
+    text-decoration: none;
+    border: none;
+}
+
+.hero{
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    opacity: 0;
+    transform: translateX(-50%);
+    animation: heroAppear 3s ease-out 17s 1 forwards;
+    border: 0.2rem ridge var(--muted-antique-gold);
+    border-radius: 0.5rem;
+    padding: 3.5rem;
+    background-color: var(--dark-translucent-green);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nature-scene{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    animation: natureAppear 5s ease-out 12s 1 forwards;
+}
+.cover-img,
+.cover-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.explore-btn{
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+    color: var(--warm-ivory);
+    animation: exploreBtn 0.75s ease-out infinite alternate;
+}
+.cover-img {
+    z-index: 1;
+}
+
+.cover-video {
+    z-index: 2;
+}
+
+.water-video{
+    opacity: 0;
+    animation: waterVideoAppear 5s ease-in-out forwards;
+}
+
+.tagline
+{color: var(--soft-cream);
+font-size: clamp(1.4rem, 1.5vw, 2rem);
+font-weight: 400;
+font-family: var(--normal-text);
+letter-spacing: 0.08em;}
+
+.sunrise-scene {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    z-index: +2;
+    opacity: 1;
+    background: linear-gradient(
+        to bottom,
+        #173b67 0%,
+        #285f8f 18%,
+        #5fa9c9 38%,
+        #9ed8e5 55%,
+        #f6b88a 72%,
+        #ff9b62 86%,
+        #ffd166 100%
+    );
+    animation:
+    dayCycle 14s linear forwards,
+    sunDisappear 5s ease-out 12s 1 forwards;
+    pointer-events: none;
+}
+
+.sun {
+    position: absolute;
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    background: #ffd166;
+    transform: translateX(-50%);
+    opacity: 0.95;
+
+    box-shadow:
+        0 0 3rem #ffd166,
+        0 0 7rem #ffb347,
+        0 0 12rem #ff8c5a;
+
+    animation: sunJourney 7s ease-out forwards;
+}
+
+.mountains {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 45%;
+}
+
+.mountains::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 35%;
+  background: linear-gradient(
+    to top,
+    rgba(190, 225, 220, 0.35),
+    rgba(190, 225, 220, 0)
+  );
+
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mountain{
+    height: 0;
+    width: 0;
+    border-left: 18rem solid transparent;
+    border-right: 18rem solid transparent;
+    border-bottom: 22rem solid #163f46;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+}
+
+.mountain-left {
+    left: 0%;
+}
+
+.mountain-center {
+    left: 15%;
+	border-left-width: 22rem;
+	border-right-width: 22rem;
+	border-bottom: 30rem solid #234b55;
+	z-index: 0;
+}
+.mountain-right {
+    border-bottom: 22rem solid #285d61;
+    left: 55%;
+}
+.mountain::after {
+	content: "";
+	position: absolute;
+	left: -3.5rem;
+	top: -0.1rem;
+	width: 0;
+	height: 0;
+	border-left: 3.5rem solid transparent;
+	border-right: 3.5rem solid transparent;
+	border-bottom: 4.5rem solid #93a66f;
+	opacity: 0.8;
+	border-radius: 50%;
+}
+.ground{
+    position: absolute;
+    bottom: -2.5rem;
+    left: -10%;
+    width: 120%;
+    height: 16%;
+    background: #1b3d3c;
+    border-radius: 40%;
+}
+
+.grass {
+	position: absolute;
+	width: 0.5rem;
+	height: 3rem;
+	z-index: +1;
+	border-radius: 50%;
+	border-right: 0.2rem solid transparent;
+    background-color: #2f7c1f;
+    color: #2f7c1f;
+}
+
+.grass:nth-child(even){
+    color: #2f7c1f;
+}
+.grass:nth-child(odd){
+    color: #4fa83d;
+}
+
+.grass::after {
+	content: "";
+	position: absolute;
+	left: -0.3rem;
+	top: 0.2rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 50%;
+	border-right: 0.1rem solid currentColor;
+	border-left: 1rem solid transparent;
+	border-top: 0.3rem solid currentColor;
+    transform: rotate(-1deg);
+}
+.grass::before {
+	content: "";
+	position: absolute;
+	left: -0.3rem;
+	top: 0.2rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 50%;
+	border-left: 0.1rem solid currentColor;
+	border-right: 1rem solid transparent;
+	border-top: 0.3rem solid currentColor;
+	transform: translate(-50%) rotateY(50deg) rotateZ(70deg);
+}
+
+.clouds {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 45%;
+    pointer-events: none;
+}
+
+.cloud {
+    position: absolute;
+    width: 15rem;
+    height: 10rem;
+    top: 60%;
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 1;
+    animation: cloudAppear 12s ease-out forwards;
+}
+
+.cloud::before {
+    content: "";
+    position: absolute;
+    background-color: currentColor;
+    width: 10rem;
+    height: 7rem;
+    top: -1rem;
+    left: 0.5rem;
+    border-radius: 50%;
+}
+
+.cloud::after {
+    content: "";
+    position: absolute;
+    background-color: currentColor;
+    width: 12rem;
+    height: 7.5rem;
+    top: 2rem;
+    left: 6.5rem;
+    border-radius: 50%;
+}
+
+
+/* =========================
+   BIRD
+========================= */
+
+.birds {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.bird {
+    position: absolute;
+
+    animation: birdFly 12s linear 1 forwards;
+}
+
+.bird::before,
+.bird::after {
+    content: "";
+    position: absolute;
+    width: 1.5rem;
+    height: 0.8rem;
+    border-top: 0.2rem solid #263238;
+    border-radius: 50%;
+}
+
+.bird::before {
+    left: 0;
+    transform-origin: right center;
+    animation: leftWingFlap 0.7s ease-in-out infinite alternate;
+}
+
+.bird::after {
+    right: 0;
+    transform-origin: left center;
+    animation: rightWingFlap 0.7s ease-in-out infinite alternate;
+}
+
+.main{
+    
+}
+
+section{
+    position: relative;
+    height: 100vh;
+}
+.water-section {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+.water-img{
+    transform: rotateZ(180deg);
+}
+.water-content {
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.water-window {
+    width: 42rem;
+    height: 24rem;
+    object-fit: cover;
+    opacity: 0.7;
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 25%,
+        black 75%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 25%,
+        black 75%,
+        transparent 100%
+    );
+}
+
+.water-text {
+    position: absolute;
+    top: 49%;
+    left: 80%;
+    width: 20%;
+    color: var(--water-aqua);
+    font-family: var(--headings-text);
+    font-size: clamp(2.8rem, 2.5vw, 3.6rem);
+    line-height: 1.25;
+    z-index: 3;
+    text-align: center;
+}
+
+/* Animations */
+
+@keyframes dayCycle {
+
+    0% {
+        background: #285f8f;
+    }
+
+    50% {
+        background: #5fa9c9;
+    }
+
+    100% {
+        background: #9ed8e5;
+    }
+}
+@keyframes sunJourney {
+    from {
+        left: 50%;
+        top: 100%;
+    }
+
+    to {
+        left: 50%;
+        top: 15%;
+    }
+}
+@keyframes sunDisappear {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+@keyframes cloudAppear {
+    0% {
+        opacity: 0;
+    }
+
+    45% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 0.9;
+    }
+}
+@keyframes birdFly {
+    from {
+        transform: translateX(-5rem);
+    }
+
+    to {
+        transform: translateX(110vw);
+    }
+}
+@keyframes leftWingFlap {
+    from {
+        transform: rotate(20deg);
+    }
+
+    to {
+        transform: rotate(-20deg);
+    }
+}
+@keyframes rightWingFlap {
+    from {
+        transform: rotate(-20deg);
+    }
+
+    to {
+        transform: rotate(20deg);
+    }
+}
+
+
+
+@keyframes heroAppear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 3rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+@keyframes natureAppear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+@keyframes exploreBtn {
+    from {
+        transform: translateY(-50%);
+    }
+    
+    to {
+        transform: translateY(-30%);
+    }
+}
+@keyframes waterVideoAppear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
