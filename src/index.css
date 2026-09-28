@@ -6,11 +6,20 @@ font-family: "Cormorant Garamond", serif; */
     --warm-ivory: rgba(255, 232, 183, 1);
     --soft-cream: rgba(255, 248, 223, 1);
     --dark-translucent-green:rgba(1, 50, 32, 0.35);
-    --dark-translucent-blue: rgba(3, 34, 51, 0.35);
     --headings-text: "Cormorant Garamond", serif;
-    --normal-text: "Montserrat", sans-serif;
-    --water-aqua: #8FE8E8;
-    --water-deep-teal: #075E73;
+    --body-font: "Montserrat", sans-serif;
+    --earth-is-alive-primary: rgba(24, 34, 29, 1);
+    --earth-is-alive-secondary: rgba(83, 96, 88, 1);
+    --earth-is-alive-Green:#1F6B45;
+    --earth-is-alive-Lime-accent:#A8C957;
+    --earth-is-alive-Turquoise:#008C95;
+    --earth-is-alive-Aqua:#63D6C5;
+    --earth-is-alive-Terracotta:#B85C38;
+    --earth-is-alive-Sand:#D99A5B;
+    --earth-is-alive-Coral:#E4572E;
+    --earth-is-alive-Orange:#F4A261;
+    --earth-is-alive-Indigo:#3155A6;
+    --earth-is-alive-Sky-blue:#6FA8DC;
 }
 
 html{
@@ -26,18 +35,27 @@ html{
     box-sizing: border-box;
 }
 
+body{
+    font-family: var(--body-font);
+}
+
 .s1p4x-r90deg {
     transform: scale(1.5) rotate(120deg);
     display: inline-block;
 }
 
+.text-earth-is-alive-primary{
+    color: var(--earth-is-alive-primary);
+}
+.text-earth-is-alive-secondary{
+    color: var(--earth-is-alive-secondary);
+}
 .text-warm-ivory{
     color: var(--warm-ivory);
 }
 .bg-warm-ivory{
     background-color: var(--warm-ivory);
 }
-
 .text-muted-antique-gold{
     color: var(--muted-antique-gold);
 }
@@ -51,12 +69,18 @@ font-size: clamp(4.2rem, 5vw, 7rem);
 font-weight: 500;
 font-family: var(--headings-text);
 letter-spacing: 0.02em;}
+h2{
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 500;
+    font-family: var(--headings-text);
+}
 
 .btn {
-    font-size: 1.8rem;
+    font-size: 2rem;
     letter-spacing: 0.05rem;
     font-weight: 500;
     cursor: pointer;
+    font-family: var(--body-font);
 }
 .btn-link {
     text-decoration: none;
@@ -69,7 +93,7 @@ letter-spacing: 0.02em;}
     top: 42%;
     opacity: 0;
     transform: translateX(-50%);
-    animation: heroAppear 3s ease-out 17s 1 forwards;
+    animation: heroAppear 3s ease-out 12s 1 forwards;
     border: 0.2rem ridge var(--muted-antique-gold);
     border-radius: 0.5rem;
     padding: 3.5rem;
@@ -87,7 +111,7 @@ letter-spacing: 0.02em;}
     height: 100%;
     width: 100%;
     opacity: 0;
-    animation: natureAppear 5s ease-out 12s 1 forwards;
+    animation: natureAppear 5s ease-out 8s 1 forwards;
 }
 .cover-img,
 .cover-video {
@@ -103,7 +127,10 @@ letter-spacing: 0.02em;}
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     z-index: 1;
-    color: var(--warm-ivory);
+    animation: exploreBtn 0.75s ease-out infinite alternate;
+}
+.section-next {
+    display: inline-block;
     animation: exploreBtn 0.75s ease-out infinite alternate;
 }
 .cover-img {
@@ -119,12 +146,14 @@ letter-spacing: 0.02em;}
     animation: waterVideoAppear 5s ease-in-out forwards;
 }
 
-.tagline
-{color: var(--soft-cream);
-font-size: clamp(1.4rem, 1.5vw, 2rem);
-font-weight: 400;
-font-family: var(--normal-text);
-letter-spacing: 0.08em;}
+p{
+    font-size: clamp(1.4rem, 1.5vw, 2rem);
+    font-weight: 400;
+    font-family: var(--body-font);
+    letter-spacing: 0.08em;    
+}
+.tagline{color: var(--soft-cream);
+}
 
 .sunrise-scene {
     min-height: 100vh;
@@ -143,8 +172,8 @@ letter-spacing: 0.08em;}
         #ffd166 100%
     );
     animation:
-    dayCycle 14s linear forwards,
-    sunDisappear 5s ease-out 12s 1 forwards;
+    dayCycle 7s linear forwards,
+    sunDisappear 5s ease-out 8s 1 forwards;
     pointer-events: none;
 }
 
@@ -340,7 +369,7 @@ letter-spacing: 0.08em;}
 .bird {
     position: absolute;
 
-    animation: birdFly 12s linear 1 forwards;
+    animation: birdFly 7s linear 1 forwards;
 }
 
 .bird::before,
@@ -364,67 +393,21 @@ letter-spacing: 0.08em;}
     transform-origin: left center;
     animation: rightWingFlap 0.7s ease-in-out infinite alternate;
 }
-
-.main{
-    
-}
-
 section{
-    position: relative;
-    height: 100vh;
+    min-height: 100vh;
 }
-.water-section {
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-}
-.water-img{
-    transform: rotateZ(180deg);
-}
-.water-content {
-    position: absolute;
-    top: 40%;
-    left: 10%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.water-window {
-    width: 42rem;
-    height: 24rem;
-    object-fit: cover;
-    opacity: 0.7;
-
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        black 25%,
-        black 75%,
-        transparent 100%
-    );
-
-    mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        black 25%,
-        black 75%,
-        transparent 100%
-    );
+.container{
+    max-width: 170rem;
+    margin: 0 auto;
 }
 
-.water-text {
-    position: absolute;
-    top: 49%;
-    left: 80%;
-    width: 20%;
-    color: var(--water-aqua);
-    font-family: var(--headings-text);
-    font-size: clamp(2.8rem, 2.5vw, 3.6rem);
-    line-height: 1.25;
-    z-index: 3;
-    text-align: center;
+
+#earthIsAlive{
+    background-color: #F5F2E8;
+}
+
+.earth-is-alive-heading{
+    color: var(--earth-is-alive-primary);
 }
 
 /* Animations */
